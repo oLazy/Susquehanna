@@ -20,3 +20,10 @@ TEST_CASE("c-style array", "[array_view]") {
     }
     REQUIRE(sum==10);
 }
+
+TEST_CASE("c-style array infers the right size", "[array-view]"){
+    const float raw[] = {0.1f, 0.2f, 0.3f};
+    array_view<const float> view(raw);
+    REQUIRE(view.getSize()==3);
+    REQUIRE(view[1] == 0.2f);
+}
